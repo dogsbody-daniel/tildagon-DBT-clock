@@ -4,6 +4,7 @@ import app
 import ntptime
 import imu
 import math
+import random
 
 from events.input import Buttons, BUTTON_TYPES
 
@@ -40,6 +41,9 @@ class clockapp(app.App):
 
 
         ctx.rgb(0,0,0).rectangle(-120,-120,240,240).fill()
+        r = random.random()
+        g = random.random()
+        b = random.random()
 
         if self.acc_read:
             ax, ay, az = self.acc_read
@@ -48,9 +52,9 @@ class clockapp(app.App):
             
             if ax < 0:
                 ctx.rotate(math.pi)
-            ctx.rgb(1,1,1).move_to(-55,15).text(current_time)
+            ctx.rgb(r,g,b).move_to(-55,15).text(current_time)
         else:
-            ctx.rgb(1,1,1).move_to(-55,15).text(current_time)
+            ctx.rgb(r,g,b).move_to(-55,15).text(current_time)
 
         utime.sleep(1)
         ctx.restore()
